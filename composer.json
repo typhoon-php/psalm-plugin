@@ -1,0 +1,53 @@
+{
+    "name": "typhoon/psalm-plugin",
+    "description": "Typhoon Psalm Plugin",
+    "license": "MIT",
+    "type": "psalm-plugin",
+    "authors": [
+        {
+            "name": "Valentin Udaltsov",
+            "email": "udaltsov.valentin@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "ext-simplexml": "*",
+        "nikic/php-parser": "^4.18",
+        "typhoon/type": "^0.3@dev",
+        "vimeo/psalm": "^5@dev"
+    },
+    "require-dev": {
+        "ergebnis/composer-normalize": "^2.36.0",
+        "friendsofphp/php-cs-fixer": "^3.26.1",
+        "phpunit/phpunit": "^10.5",
+        "phpyh/coding-standard": "^2.5.0",
+        "phpyh/psalm-tester": "^0.1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Typhoon\\PsalmPlugin\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Typhoon\\PsalmPlugin\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "psalm": {
+            "pluginClass": "Typhoon\\PsalmPlugin\\TyphoonPlugin"
+        }
+    },
+    "scripts": {
+        "fixcs": "PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix -v",
+        "pre-command-run": "mkdir -p var",
+        "psalm": "psalm --show-info --no-diff",
+        "test": "phpunit"
+    }
+}
